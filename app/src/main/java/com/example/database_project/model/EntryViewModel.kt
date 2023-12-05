@@ -6,8 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.database_project.data.Siswa
 import com.example.database_project.repository.OflineRepositorySiswa
+import com.example.database_project.repository.RepositorySiswa
 
-class EntryViewModel(private val repositorySiswa: OflineRepositorySiswa): ViewModel() {
+class EntryViewModel(private val repositorySiswa: RepositorySiswa): ViewModel() {
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
 
