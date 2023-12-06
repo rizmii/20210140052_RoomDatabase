@@ -18,4 +18,5 @@
     <string name="update">Edit</string>
     <string name="attention">Perhatian</string>
     <string name="confirmation_question">Apakah anda yakin menghapus ini ?</string>
+    <string name="btn_submit">Submit</string>
 </resources>
