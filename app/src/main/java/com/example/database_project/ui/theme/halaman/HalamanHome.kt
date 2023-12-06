@@ -38,6 +38,7 @@ import com.example.database_project.data.Siswa
 import com.example.database_project.model.HomeViewModel
 import com.example.database_project.model.PenyediaViewModel
 import com.example.database_project.navigasi.DestinasiNavigasi
+import com.example.database_project.navigasi.SiswaTopAppBar
 
 object DestinasiHome : DestinasiNavigasi {
 
@@ -57,13 +58,13 @@ object DestinasiHome : DestinasiNavigasi {
 
         Scaffold(
             modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-//            topBar = {
-//                SiswaTopAppBar(
-//                    title = stringResource(id = DestinasiHome.titleRes),
-//                    canNavigateBack = false,
-//                    scrollBehavior = scrollBehavior
-//                )
-//            },
+            topBar = {
+                SiswaTopAppBar(
+                    title = stringResource(id = DestinasiHome.titleRes),
+                    canNavigateBack = false,
+                    scrollBehavior = scrollBehavior
+                )
+            },
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = navigateToItemEntry,

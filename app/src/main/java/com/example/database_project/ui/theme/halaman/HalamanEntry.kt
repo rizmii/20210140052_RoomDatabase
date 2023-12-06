@@ -29,6 +29,7 @@ import com.example.database_project.model.EntryViewModel
 import com.example.database_project.model.PenyediaViewModel
 import com.example.database_project.model.UIStateSiswa
 import com.example.database_project.navigasi.DestinasiNavigasi
+import com.example.database_project.navigasi.SiswaTopAppBar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -50,13 +51,13 @@ object DestinasiEntry : DestinasiNavigasi {
 
         Scaffold(
             modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-//            topBar = {
-//                SiswaTopAppBar(
-//                    title = stringResource(DestinasiEntry.titleRes),
-//                    canNavigateBack = true,
-//                    scrollBehavior = scrollBehavior
-//                )
-//            }
+            topBar = {
+                SiswaTopAppBar(
+                    title = stringResource(DestinasiEntry.titleRes),
+                    canNavigateBack = true,
+                    scrollBehavior = scrollBehavior
+                )
+            }
         ) { innerPadding ->
             EntrySiswaBody(
                 uiStateSiswa = viewModel.uiStateSiswa,
