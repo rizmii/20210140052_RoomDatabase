@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class OflineRepositorySiswa (private val siswaDAO: SiswaDAO): RepositorySiswa{
     override fun getAllSiswaStream(): Flow<List<Siswa>> = siswaDAO.getAllSiswa()
 
-    override fun getAllSiswaStream(id : Int): Flow<Siswa?> {
+    override fun getSiswaStream(id : Int): Flow<Siswa?> {
         return siswaDAO.getSiswa(id)
     }
 
