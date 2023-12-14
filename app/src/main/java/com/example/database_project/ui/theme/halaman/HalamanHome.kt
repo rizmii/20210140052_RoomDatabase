@@ -1,5 +1,6 @@
 package com.example.database_project.ui.theme.halaman
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -51,7 +52,8 @@ object DestinasiHome : DestinasiNavigasi {
     fun HomeScreen(
         modifier: Modifier = Modifier,
         viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory),
-        navigateToItemEntry: () -> Unit
+        navigateToItemEntry: () -> Unit,
+        onDetailClick: (Int)->Unit
     ) {
         val scrollBehavior =
             TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -81,14 +83,16 @@ object DestinasiHome : DestinasiNavigasi {
                 itemSiswa = uiStateSiswa.listSiswa,
                 modifier = Modifier
                     .padding(innerPadding)
-                    .fillMaxSize()
+                    .fillMaxSize(),
+                onSiswaClick = onDetailClick
             )
             }
         }
     @Composable
     fun BodyHome(
         modifier: Modifier = Modifier,
-        itemSiswa: List<Siswa>
+        itemSiswa: List<Siswa>,
+        onSiswaClick: (Int)-> Unit = {}
     ) {
         Column(
             modifier = modifier,
@@ -103,7 +107,8 @@ object DestinasiHome : DestinasiNavigasi {
             } else {
                 ListSiswa(
                     itemSiswa = itemSiswa,
-                    modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+                    modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small)),
+                    onItemClick = {onSiswaClick(it.id)}
                 )
             }
         }
@@ -111,7 +116,8 @@ object DestinasiHome : DestinasiNavigasi {
     @Composable
     fun ListSiswa(
         itemSiswa: List<Siswa>,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
+        onItemClick: (Siswa)->Unit
     ) {
         LazyColumn(modifier = Modifier) {
             items(items = itemSiswa, key = { it.id }) { person ->
@@ -119,6 +125,7 @@ object DestinasiHome : DestinasiNavigasi {
                     siswa = person,
                     modifier = Modifier
                         .padding(dimensionResource(id = R.dimen.padding_small))
+                        .clickable{onItemClick(person)}
                 )
             }
         }

@@ -1,6 +1,7 @@
 package com.example.database_project.model
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.database_project.AplikasiSiswa
 import androidx.lifecycle.viewmodel.initializer
@@ -13,6 +14,18 @@ object PenyediaViewModel {
                 }
         initializer{
             EntryViewModel(AplikasiSiswa().container.repositorySiswa)
+        }
+        initializer {
+            DetailsViewModel(
+                createSavedStateHandle(),
+                aplikasiSiswa().container.repositorySiswa,
+            )
+        }
+        initializer {
+            EditViewModel(
+                createSavedStateHandle(),
+                aplikasiSiswa().container.repositorySiswa
+            )
         }
             }
         }
